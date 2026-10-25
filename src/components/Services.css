@@ -1,9 +1,19 @@
 
+/* ================================
+   SERVICES SECTION
+================================ */
+
+
 .services {
-   padding: 90px 6%;
+  padding: 90px 6%;
   background: #0b1120;
   color: #ffffff;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
+
+
 
 .services h2,
 .services h3 {
@@ -22,58 +32,108 @@
   color: #c4b5fd;
 }
 
+
 .services-inner {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   gap: 80px;
+  align-items: start;
+}
+
+/* ================================
+   SECTION HEADING
+================================ */
+
+.services-heading {
+  min-width: 0;
+}
+
+.services-heading .section-label {
+  margin: 0 0 18px;
+  color: var(--color-accent, #93b4ff);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 .services-heading h2 {
   margin: 0 0 18px;
   font-size: clamp(36px, 4vw, 48px);
   font-weight: 500;
+  line-height: 1.2;
   letter-spacing: -1.8px;
 }
 
-.services-heading > p:last-child {
+.services-heading .services-subtitle {
+  margin: 0 0 12px;
+  color: var(--color-text, #ffffff);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.services-heading .services-intro {
   max-width: 330px;
-  color: #73736b;
+  margin: 0;
+  color: var(--color-muted, #c3cddd);
   font-size: 14px;
   line-height: 1.9;
 }
 
+/* ================================
+   SERVICES LIST
+================================ */
+
 .services-list {
-  border-top: 1px solid #e8e7e1;
+  min-width: 0;
+  border-top: 1px solid var(--color-border, #293548);
+}
+
+/* Reveal wraps each service-item in a div */
+.services-list > div {
+  min-width: 0;
 }
 
 .service-item {
+  position: relative;
   display: grid;
-  grid-template-columns: 35px 1fr 25px;
+  grid-template-columns: 35px minmax(0, 1fr) 25px;
   gap: 12px;
   align-items: start;
   padding: 25px 0;
-  border-bottom: 1px solid #e8e7e1;
+  border-bottom: 1px solid var(--color-border, #293548);
+  transition:
+    padding-left 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.service-item:hover {
+  padding-left: 6px;
+  border-bottom-color: var(--color-accent, #60a5fa);
 }
 
 .service-number {
   padding-top: 4px;
-  color: #85857b;
+  color: var(--color-muted, #858da0);
   font-size: 11px;
+  letter-spacing: 0.5px;
 }
 
 .service-item h3 {
+  grid-column: 2;
   margin: 0;
   font-size: 17px;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .service-item p {
   grid-column: 2;
   max-width: 420px;
-  margin: 0;
-  color: #73736b;
+  margin: 8px 0 0;
+  color: var(--color-muted, #c3cddd);
   font-size: 13px;
   line-height: 1.8;
 }
@@ -81,24 +141,104 @@
 .service-arrow {
   grid-column: 3;
   grid-row: 1;
-  color: #68685f;
+  color: var(--color-accent, #93b4ff);
   text-align: right;
+  font-size: 18px;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
 }
 
+.service-item:hover .service-arrow {
+  transform: translate(3px, -3px);
+  color: var(--color-secondary, #c4b5fd);
+}
+
+/* ================================
+   TABLET RESPONSIVENESS
+================================ */
+
+@media (max-width: 950px) {
+  .services {
+    padding: 80px 5%;
+  }
+
+  .services-inner {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 40px;
+  }
+
+  .services-heading h2 {
+    font-size: clamp(32px, 4vw, 42px);
+  }
+}
+
+/* ================================
+   MOBILE RESPONSIVENESS
+================================ */
+
 @media (max-width: 750px) {
+  .services {
+    padding: 65px 6% 75px;
+  }
+
   .services-inner {
     grid-template-columns: 1fr;
     gap: 30px;
   }
+
+  .services-heading h2 {
+    font-size: clamp(34px, 7vw, 44px);
+  }
+
+  .services-heading .services-intro {
+    max-width: 100%;
+  }
+
+  .service-item {
+    padding: 22px 0;
+  }
 }
 
+/* ================================
+   SMALL MOBILE SCREENS
+================================ */
+
 @media (max-width: 450px) {
+  .services {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
   .service-item {
-    grid-template-columns: 25px 1fr 18px;
+    grid-template-columns: 25px minmax(0, 1fr) 18px;
     gap: 8px;
   }
 
   .service-item h3 {
     font-size: 15px;
+  }
+
+  .service-item p {
+    font-size: 12px;
+  }
+}
+
+/* ================================
+   REDUCED MOTION ACCESSIBILITY
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-item,
+  .service-arrow {
+    transition: none !important;
+  }
+
+  .service-item:hover {
+    padding-left: 0;
+  }
+
+  .service-item:hover .service-arrow {
+    transform: none;
   }
 }

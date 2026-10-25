@@ -1,14 +1,24 @@
 
+/* ================================
+   ABOUT SECTION
+================================ */
 
 .about {
   background: var(--color-bg, #f7f5f0);
   color: var(--color-text, #242b33);
   padding: 100px 7% 110px;
   border-top: 1px solid var(--color-border, #e8e5dd);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
+/* ================================
+   ABOUT LAYOUT
+================================ */
 
 .about-layout {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -16,6 +26,10 @@
   align-items: center;
   gap: 75px;
 }
+
+/* ================================
+   PROFILE PHOTO
+================================ */
 
 .about-photo {
   min-width: 0;
@@ -28,22 +42,46 @@
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 35%;
-  background: #e8e5dd;
+  background: var(--color-border, #e8e5dd);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.about-photo img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px var(--color-shadow, rgba(15, 23, 42, 0.12));
 }
 
 .photo-caption {
   display: block;
   margin-top: 13px;
-  color: #626b63;
+  color: var(--color-muted, #626b63);
   font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
 }
+
+/* ================================
+   ABOUT CONTENT
+================================ */
 
 .about-content {
   max-width: 580px;
+  min-width: 0;
+}
+
+.about-content .section-label {
+  margin-bottom: 15px;
+  color: var(--color-accent, #2563eb);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 .about-content h2 {
   margin: 0 0 25px;
+  color: var(--color-text, #242b33);
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 500;
   line-height: 1.2;
@@ -52,40 +90,137 @@
 
 .about-content p {
   margin: 0 0 18px;
-  color: #62676b;
+  color: var(--color-muted, #62676b);
   font-size: 14px;
   line-height: 1.9;
 }
 
 .about-content .about-lead {
-  color: #343c44;
+  color: var(--color-text, #343c44);
   font-size: 17px;
   line-height: 1.8;
 }
 
+/* ================================
+   CONTACT LINK
+================================ */
+
 .text-link {
   display: inline-block;
   margin-top: 10px;
-  color: #496b85;
+  color: var(--color-accent, #496b85);
   font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
   text-underline-offset: 5px;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .text-link:hover {
-  color: #242b33;
+  color: var(--color-secondary, #8b5cf6);
+  transform: translateX(3px);
 }
 
+.text-link:focus-visible {
+  outline: 2px solid var(--color-secondary, #8b5cf6);
+  outline-offset: 5px;
+}
+
+/* ================================
+   TABLET RESPONSIVENESS
+================================ */
+
+@media (max-width: 950px) {
+  .about {
+    padding: 80px 5% 90px;
+  }
+
+  .about-layout {
+    gap: 40px;
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .about-content h2 {
+    font-size: clamp(30px, 4vw, 40px);
+    letter-spacing: -1px;
+  }
+}
+
+/* ================================
+   MOBILE RESPONSIVENESS
+================================ */
+
 @media (max-width: 750px) {
+  .about {
+    padding: 65px 6% 75px;
+  }
+
   .about-layout {
     grid-template-columns: 1fr;
     gap: 35px;
   }
 
   .about-photo {
+    width: 100%;
     max-width: 420px;
   }
 
   .about-photo img {
     max-height: 500px;
+  }
+
+  .about-content {
+    max-width: 100%;
+  }
+
+  .about-content h2 {
+    font-size: clamp(30px, 7vw, 42px);
+    line-height: 1.2;
+  }
+
+  .about-content .about-lead {
+    font-size: 16px;
+  }
+}
+
+/* ================================
+   SMALL MOBILE SCREENS
+================================ */
+
+@media (max-width: 400px) {
+  .about {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .about-content h2 {
+    font-size: 29px;
+  }
+
+  .about-content p {
+    font-size: 13px;
+  }
+
+  .about-content .about-lead {
+    font-size: 15px;
+  }
+}
+
+/* ================================
+   REDUCED MOTION ACCESSIBILITY
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .about,
+  .about-photo img,
+  .text-link {
+    transition: none !important;
+  }
+
+  .about-photo img:hover,
+  .text-link:hover {
+    transform: none;
   }
 }

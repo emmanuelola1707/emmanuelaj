@@ -2,6 +2,7 @@
 import { useCallback, useState } from 'react'
 import ProjectCard from './ProjectCard'
 import FlyerLightbox from './FlyerLightbox'
+import Reveal from './Reveal'
 import './Projects.css'
 
 const projects = [
@@ -31,56 +32,70 @@ const projects = [
     id: 3,
     title: 'Pelium Beauty Empire',
     category: 'Flyer',
-    description:
-      'A promotional graphic for a beauty brand.',
+    description: 'A promotional graphic for a beauty brand.',
     image: '/images/flyer-pelium.png',
     alt: 'Pelium Beauty Empire promotional flyer',
     tags: ['Graphic Design', 'Beauty'],
   },
   {
     id: 4,
-    title: "Breaking Free",
-    category:'Flyer',
-    description: "A guided journal cover and editorial design for an addiction recovery journal.",
-    image: "/images/breaking-free.png",
-    tags: ['Graphic Design', 'E-Book cover'],
+    title: 'Breaking Free',
+    category: 'Flyer',
+    description:
+      'A guided journal cover and editorial design for an addiction recovery journal.',
+    image: '/images/breaking-free.png',
+    alt: 'Breaking Free journal cover',
+    tags: ['Graphic Design', 'E-Book Cover'],
   },
   {
     id: 5,
-    title: "Zayn Wear",
+    title: 'Zayn Wear',
     category: 'Flyer',
-    description: "A bold fashion promotional design for a clothing brand.",
-    image: "/images/zayn-wear.png",
+    description:
+      'A bold fashion promotional design for a clothing brand.',
+    image: '/images/zayn-wear.png',
+    alt: 'Zayn Wear fashion promotional design',
+    tags: ['Graphic Design', 'Fashion'],
   },
   {
-    id:6,
-    title: "Eyinju Wrapstars & Glams",
+    id: 6,
+    title: 'Eyinju Wrapstars & Glams',
     category: 'Flyer',
-    description: "A beauty and accessories promotional flyer.",
-    image: "/images/eyinju-glams.png",
+    description: 'A beauty and accessories promotional flyer.',
+    image: '/images/eyinju-glams.png',
+    alt: 'Eyinju Wrapstars and Glams promotional flyer',
+    tags: ['Graphic Design', 'Beauty'],
   },
   {
     id: 7,
-    title: "Creative Future",
-    category:'Flyer',
-    description: "An editorial-style magazine cover exploring design and technology.",
-    image: "/images/creative-future.png",
-  },
-  {
-    id: 8,
-    title: "Birthday Design",
+    title: 'Creative Future',
     category: 'Flyer',
-    description: "A personalized birthday greeting design.",
-    image: "/images/birthday-design.png",
+    description:
+      'An editorial-style magazine cover exploring design and technology.',
+    image: '/images/creative-future.png',
+    alt: 'Creative Future magazine cover',
+    tags: ['Graphic Design', 'Editorial'],
   },
+  // {
+  //   id: 8,
+  //   title: 'Birthday Design',
+  //   category: 'Flyer',
+  //   description: 'A personalized birthday greeting design.',
+  //   image: '/images/birthday-design.png',
+  //   alt: 'Birthday greeting design',
+  //   tags: ['Graphic Design', 'Celebration'],
+  // },
   {
     id: 9,
-    title: "Cleaning & Fumigation Services",
+    title: 'Cleaning & Fumigation Services',
     category: 'Flyer',
-    description: "A business advertising flyer showcasing cleaning services.",
-    image: "/images/cleaning-services.png",
+    description:
+      'A business advertising flyer showcasing cleaning services.',
+    image: '/images/cleaning-services.png',
+    alt: 'Cleaning and fumigation services flyer',
+    tags: ['Graphic Design', 'Business'],
   },
-];
+]
 
 const categories = ['All Work', 'Website', 'Flyer']
 
@@ -129,57 +144,71 @@ export default function Projects() {
   )
 
   return (
-    <section className="projects section-padding" id="projects">
+    <section
+      className="projects section-padding"
+      id="projects"
+    >
       <div className="projects-container">
-        <div className="projects-heading">
-          <div>
-            <p className="section-label">SELECTED WORK</p>
+        {/* Animated section heading */}
+        <Reveal>
+          <div className="projects-heading">
+            <div>
+              <p className="section-label">SELECTED WORK</p>
 
-            <h2>
-              Design that works.
-              <br />
-              Creativity with purpose.
-            </h2>
+              <h2>
+                Design that works.
+                <br />
+                Creativity with purpose.
+              </h2>
+            </div>
+
+            <p className="projects-intro">
+              Explore website concepts and graphic designs
+              created to help businesses present themselves
+              professionally.
+            </p>
           </div>
+        </Reveal>
 
-          <p className="projects-intro">
-            Explore website concepts and graphic designs
-            created to help businesses present themselves
-            professionally.
-          </p>
-        </div>
+        {/* Animated category filters */}
+        <Reveal delay={0.15}>
+          <div
+            className="project-filters"
+            role="group"
+            aria-label="Filter projects by category"
+          >
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                className={
+                  activeCategory === category
+                    ? 'project-filter active'
+                    : 'project-filter'
+                }
+                aria-pressed={activeCategory === category}
+                onClick={() => setActiveCategory(category)}
+              >
+                {category === 'Website' ? 'Websites' : category}
+              </button>
+            ))}
+          </div>
+        </Reveal>
 
-        <div
-          className="project-filters"
-          role="group"
-          aria-label="Filter projects by category"
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              type="button"
-              className={
-                activeCategory === category
-                  ? 'project-filter active'
-                  : 'project-filter'
-              }
-              aria-pressed={activeCategory === category}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category === 'Website' ? 'Websites' : category}
-            </button>
-          ))}
-        </div>
-
+        {/* Animated project cards */}
         <div className="projects-grid">
-          {filteredProjects.map((project) => (
-            <ProjectCard
+          {filteredProjects.map((project, index) => (
+            <Reveal
               key={project.id}
-              project={project}
-              onPreview={(selectedProject) =>
-                setActiveFlyerId(selectedProject.id)
-              }
-            />
+              delay={(index % 3) * 0.1}
+            >
+              <ProjectCard
+                project={project}
+                onPreview={(selectedProject) =>
+                  setActiveFlyerId(selectedProject.id)
+                }
+              />
+            </Reveal>
           ))}
         </div>
 
@@ -190,6 +219,7 @@ export default function Projects() {
         )}
       </div>
 
+      {/* Flyer preview lightbox */}
       {activeIndex !== -1 && (
         <FlyerLightbox
           flyers={flyers}

@@ -1,19 +1,27 @@
 
+/* ================================
+   SKILLS SECTION
+================================ */
+
 .skills {
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--color-bg, #f5f7fb);
+  color: var(--color-text, #0b1120);
   padding: 100px 7% 110px;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .skills-inner {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 85px;
+  align-items: start;
 }
 
 .skills-heading {
+  min-width: 0;
   align-self: start;
   position: sticky;
   top: 35px;
@@ -21,6 +29,7 @@
 
 .skills-heading h2 {
   margin: 0;
+  color: var(--color-text, #0b1120);
   font-size: clamp(32px, 3.5vw, 46px);
   font-weight: 600;
   line-height: 1.2;
@@ -30,35 +39,47 @@
 .skills-intro {
   max-width: 370px;
   margin-top: 22px;
-  color: var(--color-muted);
+  color: var(--color-muted, #596579);
   font-size: 14px;
   line-height: 1.9;
 }
 
 .skills-groups {
-  border-top: 1px solid var(--color-border);
+  min-width: 0;
+  border-top: 1px solid var(--color-border, #dce5f2);
+}
+
+/* Keep Reveal wrappers from affecting the layout */
+.skills-groups > div {
+  min-width: 0;
 }
 
 .skill-group {
   padding: 27px 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border, #dce5f2);
+  transition: border-color 0.25s ease;
 }
 
 .skill-group-top {
   display: grid;
-  grid-template-columns: 38px 1fr;
+  grid-template-columns: 38px minmax(0, 1fr);
   gap: 12px;
 }
 
 .skill-number {
-  color: var(--color-accent);
+  color: var(--color-accent, #2563eb);
   font-size: 12px;
   font-weight: 600;
   padding-top: 4px;
 }
 
+.skill-group-info {
+  min-width: 0;
+}
+
 .skill-group-info h3 {
   margin: 0;
+  color: var(--color-text, #0b1120);
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.4px;
@@ -67,7 +88,7 @@
 .skill-group-info p {
   margin: 9px 0 0;
   max-width: 430px;
-  color: var(--color-muted);
+  color: var(--color-muted, #596579);
   font-size: 13px;
   line-height: 1.8;
 }
@@ -82,22 +103,32 @@
 .skill-tag {
   display: inline-block;
   padding: 8px 11px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border, #dce5f2);
   border-radius: 4px;
-  background: var(--color-surface);
-  color: var(--color-text);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0b1120);
   font-size: 12px;
+  line-height: 1.5;
   transition:
     border-color 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .skill-tag:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  border-color: var(--color-accent, #2563eb);
+  color: var(--color-accent, #2563eb);
 }
 
+/* ================================
+   TABLET
+================================ */
+
 @media (max-width: 800px) {
+  .skills {
+    padding: 80px 6%;
+  }
+
   .skills-inner {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -106,14 +137,58 @@
   .skills-heading {
     position: static;
   }
+
+  .skills-intro {
+    max-width: 500px;
+  }
 }
 
+/* ================================
+   MOBILE
+================================ */
+
 @media (max-width: 480px) {
+  .skills {
+    padding: 65px 5% 75px;
+  }
+
+  .skills-heading h2 {
+    font-size: clamp(30px, 8vw, 38px);
+    letter-spacing: -1.2px;
+  }
+
+  .skill-group {
+    padding: 23px 0;
+  }
+
+  .skill-group-top {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 9px;
+  }
+
   .skill-group-info h3 {
     font-size: 16px;
   }
 
   .skill-tags {
-    margin-left: 0;
+    margin: 16px 0 0;
+    gap: 7px;
+  }
+
+  .skill-tag {
+    padding: 7px 9px;
+    font-size: 11px;
+  }
+}
+
+/* ================================
+   ACCESSIBILITY
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .skills,
+  .skill-group,
+  .skill-tag {
+    transition: none !important;
   }
 }

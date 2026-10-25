@@ -1,17 +1,25 @@
 
+
 .contact {
   background: #292a24;
   color: #ffffff;
-  padding: 100px 7% 100px;
+  padding: 100px 7%;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+
 .contact-inner {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .contact .section-label {
-  color: #c0c0b4;
+  margin-bottom: 24px;
+  color: #d8d8cc;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
 .contact h2 {
@@ -20,24 +28,37 @@
   font-weight: 500;
   line-height: 1.08;
   letter-spacing: -3px;
+  overflow-wrap: break-word;
+  color: #ffffff;
 }
 
 .contact-description {
   max-width: 490px;
   margin: 25px 0;
-  color: #d0d0c8;
+  color: #e0e0d8;
   font-size: 15px;
   line-height: 1.9;
 }
 
 .contact-email {
   display: inline-block;
+  max-width: 100%;
   margin: 10px 0 30px;
   color: #ffffff;
   font-size: clamp(16px, 2.5vw, 22px);
+  line-height: 1.7;
   text-decoration: underline;
   text-underline-offset: 7px;
+  text-decoration-thickness: 1px;
   overflow-wrap: anywhere;
+  transition:
+    color 0.25s ease,
+    text-decoration-color 0.25s ease;
+}
+
+.contact-email:hover {
+  color: #d4d7b0;
+  text-decoration-thickness: 2px;
 }
 
 .contact-links {
@@ -45,27 +66,83 @@
   flex-wrap: wrap;
   gap: 25px;
   padding-top: 25px;
-  border-top: 1px solid #515149;
+  border-top: 1px solid #5b5c52;
 }
 
 .contact-links a {
-  color: #e1e1d9;
+  display: inline-block;
+   color: #e8e8e0;
   font-size: 13px;
+  line-height: 1.8;
   text-decoration: none;
+  text-underline-offset: 4px;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .contact-links a:hover {
   color: #ffffff;
   text-decoration: underline;
-  text-underline-offset: 4px;
+  transform: translateY(-2px);
 }
 
-@media (max-width: 600px) {
+.contact a:focus-visible {
+  outline: 2px solid var(--color-contact-accent, #c4c5a8);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 80px 6%;
+  }
+
   .contact h2 {
-    letter-spacing: -1.8px;
+    letter-spacing: -2px;
+  }
+
+  .contact-description {
+    max-width: 460px;
+    font-size: 14px;
   }
 
   .contact-links {
-    gap: 18px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 65px 5%;
+  }
+
+  .contact h2 {
+    font-size: clamp(40px, 11vw, 54px);
+    letter-spacing: -1.5px;
+  }
+
+  .contact-description {
+    line-height: 1.8;
+  }
+
+  .contact-email {
+    font-size: 16px;
+  }
+
+  .contact-links {
+    gap: 12px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact,
+  .contact-email,
+  .contact-links a {
+    transition: none;
+  }
+
+  .contact-links a:hover {
+    transform: none;
   }
 }

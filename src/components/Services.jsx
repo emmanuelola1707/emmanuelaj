@@ -1,5 +1,6 @@
 
 import './Services.css'
+import Reveal from './Reveal'
 
 const services = [
   {
@@ -30,30 +31,61 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="services section-padding" id="services">
+    <section
+      className="services section-padding"
+      id="services"
+    >
       <div className="services-inner">
+        {/* Animated section heading */}
         <div className="services-heading">
-          <p className="section-label">WHAT I CAN HELP WITH</p>
-          <h2>Services.</h2>
-          <p>
-            Practical creative support for businesses that want
-            to improve their online presence.
-          </p>
+          <Reveal>
+            <p className="section-label">
+              WHAT I CAN HELP WITH
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <h2>My Services</h2>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <p className="services-subtitle">
+              Creative solutions for growing brands.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.3}>
+            <p className="services-intro">
+              Practical creative support for businesses that
+              want to improve their online presence.
+            </p>
+          </Reveal>
         </div>
 
+        {/* Animated service list */}
         <div className="services-list">
-          {services.map((service) => (
-            <article className="service-item" key={service.number}>
-              <span className="service-number">{service.number}</span>
+          {services.map((service, index) => (
+            <Reveal
+              key={service.number}
+              delay={index * 0.1}
+            >
+              <article className="service-item">
+                <span className="service-number">
+                  {service.number}
+                </span>
 
-              <h3>{service.title}</h3>
+                <h3>{service.title}</h3>
 
-              <p>{service.description}</p>
+                <p>{service.description}</p>
 
-              <span className="service-arrow" aria-hidden="true">
-                ↗
-              </span>
-            </article>
+                <span
+                  className="service-arrow"
+                  aria-hidden="true"
+                >
+                  ↗
+                </span>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

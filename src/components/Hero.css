@@ -134,3 +134,78 @@
     max-width: 550px;
   }
 }
+
+
+
+/* ================================
+   HERO ANIMATION & INTERACTIONS
+================================ */
+
+.hero-content {
+  min-width: 0;
+}
+
+.hero-visual {
+  min-width: 0;
+  will-change: transform, opacity;
+}
+
+.hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.hero-visual img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+}
+
+.hero-primary,
+.hero-secondary {
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.hero-primary:hover,
+.hero-secondary:hover {
+  transform: translateY(-3px);
+}
+
+.hero-primary span {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.hero-primary:hover span {
+  transform: translate(3px, -3px);
+}
+
+.hero-primary:focus-visible,
+.hero-secondary:focus-visible {
+  outline: 2px solid var(--color-secondary, #8b5cf6);
+  outline-offset: 4px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual img,
+  .hero-primary,
+  .hero-secondary,
+  .hero-primary span {
+    transition: none !important;
+  }
+
+  .hero-visual img:hover,
+  .hero-primary:hover,
+  .hero-secondary:hover,
+  .hero-primary:hover span {
+    transform: none;
+  }
+}

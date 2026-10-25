@@ -1,5 +1,6 @@
 
 import './Skills.css'
+import Reveal from './Reveal'
 
 const skillGroups = [
   {
@@ -59,43 +60,66 @@ const skillGroups = [
 
 export default function Skills() {
   return (
-    <section className="skills section-padding" id="skills">
+    <section
+      className="skills section-padding"
+      id="skills"
+    >
       <div className="skills-inner">
+        {/* Animated section heading */}
         <div className="skills-heading">
-          <p className="section-label">EXPERTISE & CAPABILITIES</p>
+          <Reveal>
+            <p className="section-label">
+              EXPERTISE & CAPABILITIES
+            </p>
+          </Reveal>
 
-          <h2>
-            Skills built around
-            <br />
-            creative problem-solving.
-          </h2>
+          <Reveal delay={0.1}>
+            <h2>
+              Skills built around
+              <br />
+              creative problem-solving.
+            </h2>
+          </Reveal>
 
-          <p className="skills-intro">
-            I combine technical development with visual design
-            to help businesses create a stronger digital presence.
-          </p>
+          <Reveal delay={0.2}>
+            <p className="skills-intro">
+              I combine technical development with visual design
+              to help businesses create a stronger digital presence.
+            </p>
+          </Reveal>
         </div>
 
+        {/* Animated skill groups */}
         <div className="skills-groups">
-          {skillGroups.map((group) => (
-            <article className="skill-group" key={group.number}>
-              <div className="skill-group-top">
-                <span className="skill-number">{group.number}</span>
-
-                <div className="skill-group-info">
-                  <h3>{group.title}</h3>
-                  <p>{group.description}</p>
-                </div>
-              </div>
-
-              <div className="skill-tags">
-                {group.skills.map((skill) => (
-                  <span className="skill-tag" key={skill}>
-                    {skill}
+          {skillGroups.map((group, index) => (
+            <Reveal
+              key={group.number}
+              delay={index * 0.12}
+            >
+              <article className="skill-group">
+                <div className="skill-group-top">
+                  <span className="skill-number">
+                    {group.number}
                   </span>
-                ))}
-              </div>
-            </article>
+
+                  <div className="skill-group-info">
+                    <h3>{group.title}</h3>
+                    <p>{group.description}</p>
+                  </div>
+                </div>
+
+                <div className="skill-tags">
+                  {group.skills.map((skill) => (
+                    <span
+                      className="skill-tag"
+                      key={skill}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>
