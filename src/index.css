@@ -1,0 +1,64 @@
+:root {
+  font-family: "DM Sans", sans-serif;
+  color-scheme: light;
+
+  --color-bg: #f5f7fb;
+  --color-surface: #ffffff;
+  --color-text: #0b1120;
+  --color-muted: #596579;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-secondary: #8b5cf6;
+  --color-border: #dce5f2;
+  --color-navbar: rgba(255, 255, 255, 0.92);
+  --color-card: #ffffff;
+  --color-shadow: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #080d18;
+  --color-surface: #111827;
+  --color-text: #f1f5f9;
+  --color-muted: #a1aec2;
+  --color-accent: #60a5fa;
+  --color-accent-hover: #93c5fd;
+  --color-secondary: #a78bfa;
+  --color-border: #293548;
+  --color-navbar: rgba(8, 13, 24, 0.94);
+  --color-card: #111827;
+  --color-shadow: rgba(0, 0, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #ffffff;
+}

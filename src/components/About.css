@@ -1,0 +1,91 @@
+
+
+.about {
+  background: var(--color-bg, #f7f5f0);
+  color: var(--color-text, #242b33);
+  padding: 100px 7% 110px;
+  border-top: 1px solid var(--color-border, #e8e5dd);
+}
+
+
+.about-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 75px;
+}
+
+.about-photo {
+  min-width: 0;
+}
+
+.about-photo img {
+  display: block;
+  width: 100%;
+  max-height: 570px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 35%;
+  background: #e8e5dd;
+}
+
+.photo-caption {
+  display: block;
+  margin-top: 13px;
+  color: #626b63;
+  font-size: 12px;
+}
+
+.about-content {
+  max-width: 580px;
+}
+
+.about-content h2 {
+  margin: 0 0 25px;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -1.8px;
+}
+
+.about-content p {
+  margin: 0 0 18px;
+  color: #62676b;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.about-content .about-lead {
+  color: #343c44;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #496b85;
+  font-size: 13px;
+  text-underline-offset: 5px;
+}
+
+.text-link:hover {
+  color: #242b33;
+}
+
+@media (max-width: 750px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .about-photo {
+    max-width: 420px;
+  }
+
+  .about-photo img {
+    max-height: 500px;
+  }
+}

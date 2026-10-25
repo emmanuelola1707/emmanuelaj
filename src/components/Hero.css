@@ -1,0 +1,136 @@
+
+
+.hero {
+  width: 100%;
+  padding: 100px 6%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero-content {
+  min-width: 0;
+}
+.hero-eyebrow {
+  color: var(--color-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.hero h1 {
+  color: var(--color-text);
+  font-size: clamp(38px, 5vw, 66px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -2.5px;
+}
+
+.hero-description {
+  max-width: 500px;
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.hero-primary,
+.hero-secondary {
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.hero-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.2s ease;
+}
+
+.hero-primary:hover {
+  background-color: var(--color-bg);
+}
+
+.hero-secondary {
+  color: var(--color-text);
+  text-underline-offset: 5px;
+}
+
+.hero-secondary:hover {
+  text-decoration: underline;
+}
+
+.hero-visual {
+  padding: 12px;
+  background-color: var(--color-bg);
+  border: 1px solid #dce5f2;
+}
+
+.hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero {
+     padding: 65px 5%;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 8vw, 48px);
+    letter-spacing: -1.5px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .hero {
+    padding: 65px 5% 70px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 8vw, 48px);
+    letter-spacing: -1.7px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-visual {
+    max-width: 550px;
+  }
+}
